@@ -1,0 +1,16 @@
+【apiReturn】
+[2023-02-20 08:46:13.22] 127.0.0.1
+{"iden":"getUserInfo","request":{"name":"123"},"return":{"code":1000,"msg":"成功","data":[]}}
+
+【apiReturn】
+[2023-02-20 08:47:03.894] 127.0.0.1
+{"iden":"getUserInfo","request":{"name":"123"},"return":{"code":1000,"msg":"成功","data":[]}}
+
+【apiReturn】
+[2023-02-20 08:47:14.592] 127.0.0.1
+{"iden":"getUserInfo","request":{"name":"123"},"return":{"code":1000,"msg":"成功","data":[]}}
+
+【apiReturn】
+[2023-02-20 08:47:18.673] 127.0.0.1
+{"iden":"getUserInfo","request":{"id":"123"},"return":{"code":1000,"msg":"成功","data":{"id":"123"}}}
+

@@ -1,0 +1,16 @@
+【getUserInfo】
+[2023-02-20 07:53:04.780] 127.0.0.1
+{"code":0,"msg":"Undefined variable: params","file":"D:\\phpstudy_pro\\WWW\\work\\blog\\app\\Api\\Controllers\\v1\\UserController.php:18"}
+
+【getUserInfo】
+[2023-02-20 07:58:58.280] 127.0.0.1
+{"code":0,"msg":"Undefined offset: 123","file":"D:\\phpstudy_pro\\WWW\\work\\blog\\app\\Api\\Controllers\\v1\\UserController.php:19"}
+
+【getUserInfo】
+[2023-02-20 07:59:23.210] 127.0.0.1
+{"code":0,"msg":"Undefined offset: 123","file":"D:\\phpstudy_pro\\WWW\\work\\blog\\app\\Api\\Controllers\\v1\\UserController.php:19"}
+
+【getUserInfo】
+[2023-02-20 08:00:39.589] 127.0.0.1
+{"code":0,"msg":"Undefined offset: 123","file":"D:\\phpstudy_pro\\WWW\\work\\blog\\app\\Api\\Controllers\\v1\\UserController.php:19"}
+
