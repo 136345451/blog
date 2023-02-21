@@ -24,8 +24,6 @@ class EncryptApi
     {
         try {
             $params = $request->post('params', '');
-            $paramsArr['token'] = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJtb2JpbGUiOiIxMzQ2NzMwNTI3MiIsInNldF90aW1lIjoxNjc2NTE0NTc0fQ.vfZrGvzPPi4pMOYOjABG2cn71axofY7BlIGOD5AgWTk';
-            $params = webEncrypt(json_encode($paramsArr));
             if (empty($params)) {
                 return jsonReturn(['code' => 1200, 'msg' => '非法操作']);
             }
