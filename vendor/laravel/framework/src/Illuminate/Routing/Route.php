@@ -936,7 +936,6 @@ class Route
      */
     public function getActionName()
     {
-        dump($this->action);die;
         return $this->action['controller'] ?? 'Closure';
     }
 
