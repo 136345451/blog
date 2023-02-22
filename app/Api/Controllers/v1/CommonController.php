@@ -12,6 +12,6 @@ class CommonController extends BaseController
     {
         parent::__construct();
         //定义中间件
-        $this->middleware(\App\Http\Middleware\AuthApi::class);
+        $this->middleware(\App\Http\Middleware\AuthApi::class)->except('getNoteClassList');
     }
 }
