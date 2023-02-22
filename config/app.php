@@ -12,8 +12,8 @@ return [
     //异常提示
     'exception_msg' => '网络异常，请稍后再试，如有疑问请咨询活动客服。',
     //敏感信息公共加密key和iv，这一项不用修改
-    'default_des_key' => '448EA45ECBE35BC3B8AC9AC7',
-    'default_des_iv' => '45249244',
+    'default_des_key' => '338EA45ECBE35BC3B8AC9AC4',
+    'default_des_iv' => '35249243',
     //前后端加密key和iv，这一项不用修改
     'web_des_key' => '338EC4AECBF35BC3B8AC9ACF',
     'web_des_iv' => '32345136',

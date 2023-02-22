@@ -6,6 +6,7 @@
 
 namespace App\Api\Controllers\v1;
 
+
 use Illuminate\Routing\Controller;
 
 class BaseController extends Controller

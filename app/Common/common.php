@@ -116,6 +116,92 @@ function errorLogs($e, $dir = 'error', $path = 'logs')
     return _logs(($dbt[1]['function'] ?? ""), ['code' => $e->getCode(), 'msg' => $e->getMessage(), 'file' => $e->getFile().":".$e->getLine()], $dir,$path);
 }
 
+
+/**
+ * Notes:验证手机运营商号码段
+ * User: Guo
+ * Time: 2020/3/18 16:15
+ * @param string $phone 手机号11位
+ * @return int 1中国移动，2中国联通  3中国电信  0未知
+ * 支持号码段：
+ * 1、中国移动
+ * 支持号段：134|135|136|137|138|139|147|148|150|151|152|157|158|159|165|172|178|182|183|184|187|188|195|198
+ * 其中虚拟号段：165|170号段中的1703/1705/1706
+ * 2、中国联通
+ * 支持号段：130|131|132|145|146|155|156|166|167|171|175|176|185|186
+ * 其中虚拟号段：167|171|170号段中的1704/1707/1708/1709
+ * 3、中国电信
+ * 支持号段：133|149|153|173|174|177|180|181|189|191|199
+ * 其中虚拟号段：162|170号段中的1700/1701/1702
+ * 其中物联网号段：149
+ */
+function getPhoneTypeVirtual($phone)
+{
+    $phone = trim($phone);
+    $isChinaMobile = '/^170[356]\d{7}$|^(?:165)\d{8}$/'; //移动
+    $isChinaUnion = '/^170[47-9]\d{7}$|^(?:167|171)\d{8}$/'; //联通
+    $isChinaTelcom = '/^170[0-2]\d{7}$|^(?:162)\d{8}$/'; //电信
+    if (preg_match($isChinaMobile, $phone)) {
+        return 1;
+    } elseif (preg_match($isChinaUnion, $phone)) {
+        return 2;
+    } elseif (preg_match($isChinaTelcom, $phone)) {
+        return 3;
+    } else {
+        return 0;
+    }
+}
+
+/**
+ * 获取当天剩余秒数，用于redis设置过期时间
+ */
+function getDayEnd()
+{
+    return strtotime('23:59:59') - time() + 1;
+}
+
+/**
+ * 获取当月剩余秒数，用于redis设置过期时间
+ */
+function getMonthEnd()
+{
+    return mktime(23,59,59,date('m'),date('t'),date('Y')) - time() + 1;
+}
+
+/**
+ * CURL请求
+ * @param string $url 请求url地址
+ * @param array $data post数据数组，get请放在url里面拼接。
+ * @param array $headers 请求header信息
+ * @param int $timeout 抓取超时时间，默认7秒，7秒无响应返回false。请根据业务做好重新请求的预案。
+ * @return mixed
+ */
+function httpRequest($url, $data = [], $headers = [], $timeout = 7)
+{
+    $ci = curl_init();
+    curl_setopt($ci, CURLOPT_URL, $url);
+    curl_setopt($ci, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.146 Safari/537.36");
+    curl_setopt($ci, CURLOPT_CONNECTTIMEOUT, 60);
+    curl_setopt($ci, CURLOPT_TIMEOUT, $timeout);
+    curl_setopt($ci, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ci, CURLOPT_FOLLOWLOCATION, 1);
+    //指定最多的HTTP重定向的数量，这个选项是和CURLOPT_FOLLOWLOCATION一起使用的
+    curl_setopt($ci, CURLOPT_MAXREDIRS, 2);
+    curl_setopt($ci, CURLOPT_HTTPHEADER, $headers);
+    if (!empty($data)) {
+        curl_setopt($ci, CURLOPT_POST, true);
+        $datastr = is_array($data) ? http_build_query($data) : $data;
+        curl_setopt($ci, CURLOPT_POSTFIELDS, $datastr);
+    }
+    if (preg_match('/^https:\/\//i', $url)) {
+        curl_setopt($ci, CURLOPT_SSL_VERIFYPEER, FALSE);
+        curl_setopt($ci, CURLOPT_SSL_VERIFYHOST, FALSE);
+    }
+    $response = curl_exec($ci);
+    curl_close($ci);
+    return $response;
+}
+
 /*
  * json 不转义
  * */
@@ -140,12 +226,11 @@ function jsonReturn($data, $iden = '')
 
 /**
  * @return array
- * 获取控制器和方法名
+ * 对象转数组
  */
-function getControllerAndFunction()
+function objectToArray($object)
 {
-    $action = \Route::current()->getActionName();
-    list($class, $method) = explode('@', $action);
-    $controller = substr(strrchr($class, '\\'), 1);
-    return ['controller' => $controller, 'method' => $method];
+    if (empty($object)) return [];
+    if (is_array($object)) return $object;
+    return get_object_vars($object);
 }

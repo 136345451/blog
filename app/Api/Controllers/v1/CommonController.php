@@ -6,6 +6,7 @@
 
 namespace App\Api\Controllers\v1;
 
+
 class CommonController extends BaseController
 {
     public function __construct()

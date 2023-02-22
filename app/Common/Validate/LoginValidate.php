@@ -1,13 +1,13 @@
 <?php
 /**
  * User: fangcan
- * DateTime: 2023/2/21 14:35
+ * DateTime: 2023/2/22 11:43
  */
 
 namespace App\Common\Validate;
 
 
-class UserValidate extends BaseValidate
+class LoginValidate extends BaseValidate
 {
     /**
      * 当前验证规则
@@ -16,6 +16,8 @@ class UserValidate extends BaseValidate
     protected $rule = [
         'user_id' => 'required|integer',
         'mobile' => 'required|mobile',
+        'image_key' => 'required',
+        'image_code' => 'required',
     ];
 
     /**
@@ -27,6 +29,8 @@ class UserValidate extends BaseValidate
         'user_id.integer' => '用户ID格式异常',
         'mobile.required' => '手机号不能为空',
         'mobile.mobile' => '手机号格式异常',
+        'image_key.required' => 'image_key不能为空',
+        'image_code.required' => 'image_code不能为空',
     ];
 
     /**
@@ -34,6 +38,7 @@ class UserValidate extends BaseValidate
      * @var array
      */
     protected $scene = [
-        'checkGetUserInfo' => ['user_id', 'mobile'],
+        'checkDoLogin' => ['mobile'],
+        'checkImageCode' => ['mobile', 'image_key', 'image_code'],
     ];
 }

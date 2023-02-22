@@ -39,7 +39,7 @@ class IndexService extends BaseService
         try {
             // 防止重复请求验锁
             $baseCache = new BaseCache();
-            $lock_name = 'doAward:' . $params['mobile'];
+            $lock_name = 'getLock:' . $params['mobile'];
             if ($baseCache->getLock($lock_name) > 1) {
                 return ['code' => 1600, 'msg' => '操作过于频繁，请稍后再试'];
             }

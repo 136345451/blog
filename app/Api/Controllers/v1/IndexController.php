@@ -9,7 +9,6 @@ namespace App\Api\Controllers\v1;
 
 use App\Common\Service\v1\IndexService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 
 class IndexController extends CommonController
 {
