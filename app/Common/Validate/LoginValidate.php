@@ -17,6 +17,7 @@ class LoginValidate extends BaseValidate
         'user_id' => 'required|integer',
         'mobile' => 'required|mobile',
         'email' => 'required|email',
+        'openid' => 'required',
         'image_key' => 'required',
         'image_code' => 'required',
         'validate_code' => 'required',
@@ -34,6 +35,7 @@ class LoginValidate extends BaseValidate
         'mobile.mobile' => '手机号格式异常',
         'email.required' => '邮箱不能为空',
         'email.email' => '邮箱格式异常',
+        'openid.required' => 'openid不能为空',
         'image_key.required' => '验证码标识不能为空',
         'image_code.required' => '图形验证码不能为空',
         'validate_code.required' => '验证码不能为空',
@@ -50,6 +52,7 @@ class LoginValidate extends BaseValidate
     protected $scene = [
         'checkSendCode' => ['login_type', 'image_key', 'image_code'],
         'checkDoLogin' => ['login_type', 'validate_code'],
+        'checkGetUserToken' => ['openid'],
         'checkImageCode' => ['image_key', 'image_code'],
         'checkSendEmailValidateCode' => ['to_email', 'validate_code'],
     ];

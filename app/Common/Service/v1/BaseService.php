@@ -21,7 +21,7 @@ class BaseService
     public function _getUserInfo($user_iden, $user_iden_key = 'user_id', $table_name = 'user')
     {
         $where = [$user_iden_key => $user_iden];
-        $userInfo = DB::table($table_name)->where($where)->first();
+        $userInfo = objectToArray(DB::table($table_name)->where($where)->first());
         return $userInfo;
     }
 }

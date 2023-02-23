@@ -169,14 +169,14 @@ class LoginService extends BaseService
                 $validateErrorInsert['ve_addtime'] = time();
                 if (!DB::table('validate_error')->insert($validateErrorInsert)) {
                     $baseCache->pullLock($lock_name);
-                    return ['code' => 1102, 'msg' => '数据异常，请稍后再试'];
+                    return ['code' => 1005, 'msg' => '数据异常，请稍后再试'];
                 }
                 $baseCache->pullLock($lock_name);
-                return ['code' => 1003, 'msg' => '验证码输入错误，今日剩余' . (4 - $error_cnt) . '次机会'];
+                return ['code' => 1006, 'msg' => '验证码输入错误，今日剩余' . (4 - $error_cnt) . '次机会'];
             }
             if (time() > $validateInfo['validate_addtime'] + 600) {
                 $baseCache->pullLock($lock_name);
-                return ['code' => 1004, 'msg' => $account_name . '验证码已过期'];
+                return ['code' => 1007, 'msg' => $account_name . '验证码已过期'];
             }
 
             // 登录信息入库
@@ -185,14 +185,14 @@ class LoginService extends BaseService
                 $userInsertArr['openid'] = $params['openid'];
             }
             $userInsertArr['add_time'] = time();
-            $userInfo = objectToArray(DB::table('user')->where([$account_key => $account])->first());
+            $userInfo = $this->_getUserInfo($account, $account_key);
             if (empty($userInfo)) {
                 if (!empty($params['openid']) && DB::table('user')->where(['openid' => $params['openid']])->count()) {
                     // 如果是邮箱登录，但检测到openid已存在，可能该openid已使用其他方式注册，需要验证该用户是否已绑定邮箱，如果没有则自动绑定。手机号登录同理。
-                    $userInfo = objectToArray(DB::table('user')->where(['openid' => $params['openid']])->first());
+                    $userInfo = $this->_getUserInfo($params['openid'], 'openid');
                     if (!empty($userInfo[$account_key])) {
                         $baseCache->pullLock($lock_name);
-                        return ['code' => 1003, 'msg' => '该微信号已绑定其他' . $account_name];
+                        return ['code' => 1008, 'msg' => '该微信号已绑定其他' . $account_name];
                     }
                     $userInsertArr[$account_key] = $account;
                     goto updateUserInfo;
@@ -200,19 +200,19 @@ class LoginService extends BaseService
                 $user_id = DB::table('user')->insertGetId($userInsertArr);
                 if (!$user_id) {
                     $baseCache->pullLock($lock_name);
-                    return ['code' => 1004, 'msg' => '数据异常，请稍后再试'];
+                    return ['code' => 1009, 'msg' => '数据异常，请稍后再试'];
                 }
                 goto loginSuccess;
             }
             if (!empty($params['openid']) && !empty($userInfo['openid']) && $params['openid'] != $userInfo['openid']) {
                 $baseCache->pullLock($lock_name);
-                return ['code' => 1005, 'msg' => '该' . $account_name . '已绑定其他微信号'];
+                return ['code' => 1010, 'msg' => '该' . $account_name . '已绑定其他微信号'];
             }
             updateUserInfo:
             $user_id = $userInfo['user_id'];
             if (!DB::table('user')->where(['user_id' => $userInfo['user_id']])->update($userInsertArr)) {
                 $baseCache->pullLock($lock_name);
-                return ['code' => 1006, 'msg' => '数据异常，请稍后再试'];
+                return ['code' => 1011, 'msg' => '数据异常，请稍后再试'];
             }
 
             loginSuccess:
@@ -229,6 +229,42 @@ class LoginService extends BaseService
         } catch (\Exception $e) {
             errorLogs($e);
             if (isset($lock_name)) $baseCache->pullLock($lock_name);
+            return ['code' => 1300, 'msg' => config('exception_msg')];
+        }
+    }
+
+    /**
+     * Notes: 久登录接口-获取用户token
+     * User: fangcan
+     * DateTime: 2023/2/23 10:16
+     * @param $params
+     * @param string openid 微信openid
+     * @return array
+     */
+    public function getUserToken($params)
+    {
+        try {
+            $loginValidate = new LoginValidate();
+            if (!$loginValidate->scene('checkGetUserToken')->check($params)) {
+                return ['code' => 1001, 'msg' => $loginValidate->getError()];
+            }
+            $userInfo = $this->_getUserInfo($params['openid'], 'openid');
+            if (empty($userInfo)) {
+                return ['code' => 1100, 'msg' => '未登录'];
+            }
+            $jwtArr['user_id'] = $userInfo['user_id'];
+            // 如果邮箱不为空则默认为邮箱登录
+            $login_type = !empty($userInfo['email']) ? 1 : 2;
+            $account_key = $login_type == 1 ? 'email' : 'mobile';
+            $jwtArr['account_key'] = $account_key;
+            $jwtArr[$account_key] = $jwtArr['account'] = decrypt3Des($userInfo[$account_key]);
+            $jwtArr['login_type'] = $login_type;
+            $data = [
+                'token' => $this->setToken($jwtArr)
+            ];
+            return ['code' => 1000, 'msg' => '登录成功', 'data' => $data];
+        } catch (\Exception $e) {
+            errorLogs($e);
             return ['code' => 1300, 'msg' => config('exception_msg')];
         }
     }

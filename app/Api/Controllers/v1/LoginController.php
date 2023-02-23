@@ -46,6 +46,18 @@ class LoginController extends BaseController
     }
 
     /**
+     * Notes: 久登录接口-获取用户token
+     * User: fangcan
+     * DateTime: 2023/2/23 10:04
+     */
+    public function getUserToken(Request $request)
+    {
+        $params = $request->only('openid');
+        $res = (new LoginService())->getUserToken($params);
+        return jsonReturn($res, 'getUserToken');
+    }
+
+    /**
      * Notes: 获取图形验证码
      * User: fangcan
      * DateTime: 2023/2/22 10:50
