@@ -12,6 +12,34 @@ class User extends Authenticatable
     use HasFactory, Notifiable;
 
     /**
+     * 与模型关联的表名
+     *
+     * @var string
+     */
+    protected $table = 'user';
+
+    /**
+     * 与表关联的主键
+     *
+     * @var string
+     */
+    protected $primaryKey = 'user_id';
+
+    /**
+     * 主键是否主动递增
+     *
+     * @var bool
+     */
+    public $incrementing = true;
+
+    /**
+     * 自动递增主键的「类型」
+     *
+     * @var string
+     */
+    protected $keyType = 'int';
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
