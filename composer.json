@@ -9,10 +9,12 @@
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
+        "guzzlehttp/psr7": "^2.4",
         "laravel/framework": "^8.12",
         "laravel/tinker": "^2.5",
         "lcobucci/jwt": "^3.4",
-        "mews/captcha": "^3.2"
+        "mews/captcha": "^3.2",
+        "php-amqplib/php-amqplib": "^3.6"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
