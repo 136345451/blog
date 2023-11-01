@@ -4,10 +4,10 @@
  * DateTime: 2023/2/22 10:46
  */
 
-namespace App\Api\Controllers\v1;
+namespace App\Api\Controllers\V1;
 
 
-use App\Common\Service\v1\LoginService;
+use App\Common\Service\V1\LoginService;
 use Illuminate\Http\Request;
 
 class LoginController extends BaseController

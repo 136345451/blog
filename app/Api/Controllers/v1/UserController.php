@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Api\Controllers\v1;
+namespace App\Api\Controllers\V1;
 
 
-use App\Common\Service\v1\UserService;
+use App\Common\Service\V1\UserService;
 use Illuminate\Http\Request;
 
 class UserController extends CommonController

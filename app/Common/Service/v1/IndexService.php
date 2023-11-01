@@ -4,7 +4,7 @@
  * DateTime: 2023/2/21 16:59
  */
 
-namespace App\Common\Service\v1;
+namespace App\Common\Service\V1;
 
 
 use App\Common\Cache\BaseCache;

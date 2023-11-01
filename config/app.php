@@ -6,9 +6,9 @@ return [
     //默认api接口版本，版本匹配规则在route/web.php
     'api_version' => 'v1',
     //允许的分组，匹配规则在route/route.php
-    'app_module_list'       => ['home', 'api', 'demo'],
+    'app_module_list'       => ['Home', 'Api', 'Demo'],
     // 默认模块名，这一项不使用index，分组命名尽量不和控制器和方法重名。
-    'default_app_module'         => 'api',
+    'default_app_module'         => 'Api',
     //异常提示
     'exception_msg' => '网络异常，请稍后再试，如有疑问请咨询活动客服。',
     //敏感信息公共加密key和iv，这一项不用修改

@@ -4,7 +4,7 @@
  * DateTime: 2023/2/20 14:48
  */
 
-namespace App\Api\Controllers\v1;
+namespace App\Api\Controllers\V1;
 
 
 use Illuminate\Routing\Controller;

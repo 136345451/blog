@@ -4,7 +4,7 @@
  * DateTime: 2023/2/20 14:47
  */
 
-namespace App\Api\Controllers\v1;
+namespace App\Api\Controllers\V1;
 
 
 class CommonController extends BaseController

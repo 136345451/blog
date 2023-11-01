@@ -4,10 +4,10 @@
  * DateTime: 2023/2/21 16:50
  */
 
-namespace App\Api\Controllers\v1;
+namespace App\Api\Controllers\V1;
 
 
-use App\Common\Service\v1\IndexService;
+use App\Common\Service\V1\IndexService;
 use Illuminate\Http\Request;
 
 class IndexController extends CommonController
