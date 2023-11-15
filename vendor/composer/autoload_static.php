@@ -145,6 +145,7 @@ class ComposerStaticInit8e9bc00acd6d2f3b4bc2dbc27d4b1f3e
         'I' => 
         array (
             'Intervention\\Image\\' => 19,
+            'Interop\\Queue\\' => 14,
             'Illuminate\\Support\\' => 19,
             'Illuminate\\' => 11,
         ),
@@ -166,6 +167,7 @@ class ComposerStaticInit8e9bc00acd6d2f3b4bc2dbc27d4b1f3e
         ),
         'E' => 
         array (
+            'Enqueue\\RdKafka\\' => 16,
             'Egulias\\EmailValidator\\' => 23,
         ),
         'D' => 
@@ -441,6 +443,10 @@ class ComposerStaticInit8e9bc00acd6d2f3b4bc2dbc27d4b1f3e
         array (
             0 => __DIR__ . '/..' . '/intervention/image/src/Intervention/Image',
         ),
+        'Interop\\Queue\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/queue-interop/queue-interop/src',
+        ),
         'Illuminate\\Support\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Macroable',
@@ -489,6 +495,10 @@ class ComposerStaticInit8e9bc00acd6d2f3b4bc2dbc27d4b1f3e
         'Facade\\FlareClient\\' => 
         array (
             0 => __DIR__ . '/..' . '/facade/flare-client-php/src',
+        ),
+        'Enqueue\\RdKafka\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/enqueue/rdkafka',
         ),
         'Egulias\\EmailValidator\\' => 
         array (
@@ -899,6 +909,15 @@ class ComposerStaticInit8e9bc00acd6d2f3b4bc2dbc27d4b1f3e
         'Egulias\\EmailValidator\\Warning\\QuotedString' => __DIR__ . '/..' . '/egulias/email-validator/src/Warning/QuotedString.php',
         'Egulias\\EmailValidator\\Warning\\TLD' => __DIR__ . '/..' . '/egulias/email-validator/src/Warning/TLD.php',
         'Egulias\\EmailValidator\\Warning\\Warning' => __DIR__ . '/..' . '/egulias/email-validator/src/Warning/Warning.php',
+        'Enqueue\\RdKafka\\JsonSerializer' => __DIR__ . '/..' . '/enqueue/rdkafka/JsonSerializer.php',
+        'Enqueue\\RdKafka\\RdKafkaConnectionFactory' => __DIR__ . '/..' . '/enqueue/rdkafka/RdKafkaConnectionFactory.php',
+        'Enqueue\\RdKafka\\RdKafkaConsumer' => __DIR__ . '/..' . '/enqueue/rdkafka/RdKafkaConsumer.php',
+        'Enqueue\\RdKafka\\RdKafkaContext' => __DIR__ . '/..' . '/enqueue/rdkafka/RdKafkaContext.php',
+        'Enqueue\\RdKafka\\RdKafkaMessage' => __DIR__ . '/..' . '/enqueue/rdkafka/RdKafkaMessage.php',
+        'Enqueue\\RdKafka\\RdKafkaProducer' => __DIR__ . '/..' . '/enqueue/rdkafka/RdKafkaProducer.php',
+        'Enqueue\\RdKafka\\RdKafkaTopic' => __DIR__ . '/..' . '/enqueue/rdkafka/RdKafkaTopic.php',
+        'Enqueue\\RdKafka\\Serializer' => __DIR__ . '/..' . '/enqueue/rdkafka/Serializer.php',
+        'Enqueue\\RdKafka\\SerializerAwareTrait' => __DIR__ . '/..' . '/enqueue/rdkafka/SerializerAwareTrait.php',
         'Facade\\FlareClient\\Api' => __DIR__ . '/..' . '/facade/flare-client-php/src/Api.php',
         'Facade\\FlareClient\\Concerns\\HasContext' => __DIR__ . '/..' . '/facade/flare-client-php/src/Concerns/HasContext.php',
         'Facade\\FlareClient\\Concerns\\UsesTime' => __DIR__ . '/..' . '/facade/flare-client-php/src/Concerns/UsesTime.php',
@@ -2755,6 +2774,29 @@ class ComposerStaticInit8e9bc00acd6d2f3b4bc2dbc27d4b1f3e
         'Illuminate\\View\\ViewFinderInterface' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/ViewFinderInterface.php',
         'Illuminate\\View\\ViewName' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/ViewName.php',
         'Illuminate\\View\\ViewServiceProvider' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/ViewServiceProvider.php',
+        'Interop\\Queue\\ConnectionFactory' => __DIR__ . '/..' . '/queue-interop/queue-interop/src/ConnectionFactory.php',
+        'Interop\\Queue\\Consumer' => __DIR__ . '/..' . '/queue-interop/queue-interop/src/Consumer.php',
+        'Interop\\Queue\\Context' => __DIR__ . '/..' . '/queue-interop/queue-interop/src/Context.php',
+        'Interop\\Queue\\Destination' => __DIR__ . '/..' . '/queue-interop/queue-interop/src/Destination.php',
+        'Interop\\Queue\\Exception' => __DIR__ . '/..' . '/queue-interop/queue-interop/src/Exception.php',
+        'Interop\\Queue\\Exception\\DeliveryDelayNotSupportedException' => __DIR__ . '/..' . '/queue-interop/queue-interop/src/Exception/DeliveryDelayNotSupportedException.php',
+        'Interop\\Queue\\Exception\\Exception' => __DIR__ . '/..' . '/queue-interop/queue-interop/src/Exception/Exception.php',
+        'Interop\\Queue\\Exception\\InvalidDestinationException' => __DIR__ . '/..' . '/queue-interop/queue-interop/src/Exception/InvalidDestinationException.php',
+        'Interop\\Queue\\Exception\\InvalidMessageException' => __DIR__ . '/..' . '/queue-interop/queue-interop/src/Exception/InvalidMessageException.php',
+        'Interop\\Queue\\Exception\\PriorityNotSupportedException' => __DIR__ . '/..' . '/queue-interop/queue-interop/src/Exception/PriorityNotSupportedException.php',
+        'Interop\\Queue\\Exception\\PurgeQueueNotSupportedException' => __DIR__ . '/..' . '/queue-interop/queue-interop/src/Exception/PurgeQueueNotSupportedException.php',
+        'Interop\\Queue\\Exception\\SubscriptionConsumerNotSupportedException' => __DIR__ . '/..' . '/queue-interop/queue-interop/src/Exception/SubscriptionConsumerNotSupportedException.php',
+        'Interop\\Queue\\Exception\\TemporaryQueueNotSupportedException' => __DIR__ . '/..' . '/queue-interop/queue-interop/src/Exception/TemporaryQueueNotSupportedException.php',
+        'Interop\\Queue\\Exception\\TimeToLiveNotSupportedException' => __DIR__ . '/..' . '/queue-interop/queue-interop/src/Exception/TimeToLiveNotSupportedException.php',
+        'Interop\\Queue\\Impl\\ConsumerPollingTrait' => __DIR__ . '/..' . '/queue-interop/queue-interop/src/Impl/ConsumerPollingTrait.php',
+        'Interop\\Queue\\Impl\\ConsumerVisibilityTimeoutTrait' => __DIR__ . '/..' . '/queue-interop/queue-interop/src/Impl/ConsumerVisibilityTimeoutTrait.php',
+        'Interop\\Queue\\Impl\\MessageTrait' => __DIR__ . '/..' . '/queue-interop/queue-interop/src/Impl/MessageTrait.php',
+        'Interop\\Queue\\Message' => __DIR__ . '/..' . '/queue-interop/queue-interop/src/Message.php',
+        'Interop\\Queue\\Processor' => __DIR__ . '/..' . '/queue-interop/queue-interop/src/Processor.php',
+        'Interop\\Queue\\Producer' => __DIR__ . '/..' . '/queue-interop/queue-interop/src/Producer.php',
+        'Interop\\Queue\\Queue' => __DIR__ . '/..' . '/queue-interop/queue-interop/src/Queue.php',
+        'Interop\\Queue\\SubscriptionConsumer' => __DIR__ . '/..' . '/queue-interop/queue-interop/src/SubscriptionConsumer.php',
+        'Interop\\Queue\\Topic' => __DIR__ . '/..' . '/queue-interop/queue-interop/src/Topic.php',
         'Intervention\\Image\\AbstractColor' => __DIR__ . '/..' . '/intervention/image/src/Intervention/Image/AbstractColor.php',
         'Intervention\\Image\\AbstractDecoder' => __DIR__ . '/..' . '/intervention/image/src/Intervention/Image/AbstractDecoder.php',
         'Intervention\\Image\\AbstractDriver' => __DIR__ . '/..' . '/intervention/image/src/Intervention/Image/AbstractDriver.php',
