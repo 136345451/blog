@@ -548,6 +548,16 @@ class ComposerStaticInit8e9bc00acd6d2f3b4bc2dbc27d4b1f3e
         ),
     );
 
+    public static $prefixesPsr0 = array (
+        'K' => 
+        array (
+            'Kafka\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/nmred/kafka-php/src',
+            ),
+        ),
+    );
+
     public static $classMap = array (
         'App\\Api\\Controllers\\V1\\BaseController' => __DIR__ . '/../..' . '/app/Api/Controllers/V1/BaseController.php',
         'App\\Api\\Controllers\\V1\\CommonController' => __DIR__ . '/../..' . '/app/Api/Controllers/V1/CommonController.php',
@@ -583,7 +593,7 @@ class ComposerStaticInit8e9bc00acd6d2f3b4bc2dbc27d4b1f3e
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Http\\Resources\\User' => __DIR__ . '/../..' . '/app/Http/Resources/User.php',
-        'App\\Jobs\\AddVisitProduct' => __DIR__ . '/../..' . '/app/Jobs/AddVisitProduct.php',
+        'App\\Jobs\\IncVisitProduct' => __DIR__ . '/../..' . '/app/Jobs/IncVisitProduct.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
@@ -2176,6 +2186,7 @@ class ComposerStaticInit8e9bc00acd6d2f3b4bc2dbc27d4b1f3e
         'Illuminate\\Foundation\\Application' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Application.php',
         'Illuminate\\Foundation\\Auth\\Access\\Authorizable' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Auth/Access/Authorizable.php',
         'Illuminate\\Foundation\\Auth\\Access\\AuthorizesRequests' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Auth/Access/AuthorizesRequests.php',
+        'Illuminate\\Foundation\\Auth\\Admin' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Auth/Admin.php',
         'Illuminate\\Foundation\\Auth\\EmailVerificationRequest' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Auth/EmailVerificationRequest.php',
         'Illuminate\\Foundation\\Auth\\User' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Auth/User.php',
         'Illuminate\\Foundation\\Bootstrap\\BootProviders' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Bootstrap/BootProviders.php',
@@ -2871,6 +2882,36 @@ class ComposerStaticInit8e9bc00acd6d2f3b4bc2dbc27d4b1f3e
         'Intervention\\Image\\Response' => __DIR__ . '/..' . '/intervention/image/src/Intervention/Image/Response.php',
         'Intervention\\Image\\Size' => __DIR__ . '/..' . '/intervention/image/src/Intervention/Image/Size.php',
         'JsonException' => __DIR__ . '/..' . '/symfony/polyfill-php73/Resources/stubs/JsonException.php',
+        'Kafka\\Client' => __DIR__ . '/..' . '/nmred/kafka-php/src/Kafka/Client.php',
+        'Kafka\\ClusterMetaData' => __DIR__ . '/..' . '/nmred/kafka-php/src/Kafka/ClusterMetaData.php',
+        'Kafka\\Consumer' => __DIR__ . '/..' . '/nmred/kafka-php/src/Kafka/Consumer.php',
+        'Kafka\\Exception' => __DIR__ . '/..' . '/nmred/kafka-php/src/Kafka/Exception.php',
+        'Kafka\\Exception\\NotSupported' => __DIR__ . '/..' . '/nmred/kafka-php/src/Kafka/Exception/NotSupported.php',
+        'Kafka\\Exception\\OutOfRange' => __DIR__ . '/..' . '/nmred/kafka-php/src/Kafka/Exception/OutOfRange.php',
+        'Kafka\\Exception\\Protocol' => __DIR__ . '/..' . '/nmred/kafka-php/src/Kafka/Exception/Protocol.php',
+        'Kafka\\Exception\\Socket' => __DIR__ . '/..' . '/nmred/kafka-php/src/Kafka/Exception/Socket.php',
+        'Kafka\\Exception\\SocketConnect' => __DIR__ . '/..' . '/nmred/kafka-php/src/Kafka/Exception/SocketConnect.php',
+        'Kafka\\Exception\\SocketEOF' => __DIR__ . '/..' . '/nmred/kafka-php/src/Kafka/Exception/SocketEOF.php',
+        'Kafka\\Exception\\SocketTimeout' => __DIR__ . '/..' . '/nmred/kafka-php/src/Kafka/Exception/SocketTimeout.php',
+        'Kafka\\Log' => __DIR__ . '/..' . '/nmred/kafka-php/src/Kafka/Log.php',
+        'Kafka\\MetaDataFromKafka' => __DIR__ . '/..' . '/nmred/kafka-php/src/Kafka/MetaDataFromKafka.php',
+        'Kafka\\Offset' => __DIR__ . '/..' . '/nmred/kafka-php/src/Kafka/Offset.php',
+        'Kafka\\Produce' => __DIR__ . '/..' . '/nmred/kafka-php/src/Kafka/Produce.php',
+        'Kafka\\Protocol\\Decoder' => __DIR__ . '/..' . '/nmred/kafka-php/src/Kafka/Protocol/Decoder.php',
+        'Kafka\\Protocol\\Encoder' => __DIR__ . '/..' . '/nmred/kafka-php/src/Kafka/Protocol/Encoder.php',
+        'Kafka\\Protocol\\Fetch\\Helper\\CommitOffset' => __DIR__ . '/..' . '/nmred/kafka-php/src/Kafka/Protocol/Fetch/Helper/CommitOffset.php',
+        'Kafka\\Protocol\\Fetch\\Helper\\Consumer' => __DIR__ . '/..' . '/nmred/kafka-php/src/Kafka/Protocol/Fetch/Helper/Consumer.php',
+        'Kafka\\Protocol\\Fetch\\Helper\\FreeStream' => __DIR__ . '/..' . '/nmred/kafka-php/src/Kafka/Protocol/Fetch/Helper/FreeStream.php',
+        'Kafka\\Protocol\\Fetch\\Helper\\Helper' => __DIR__ . '/..' . '/nmred/kafka-php/src/Kafka/Protocol/Fetch/Helper/Helper.php',
+        'Kafka\\Protocol\\Fetch\\Helper\\HelperAbstract' => __DIR__ . '/..' . '/nmred/kafka-php/src/Kafka/Protocol/Fetch/Helper/HelperAbstract.php',
+        'Kafka\\Protocol\\Fetch\\Message' => __DIR__ . '/..' . '/nmred/kafka-php/src/Kafka/Protocol/Fetch/Message.php',
+        'Kafka\\Protocol\\Fetch\\MessageSet' => __DIR__ . '/..' . '/nmred/kafka-php/src/Kafka/Protocol/Fetch/MessageSet.php',
+        'Kafka\\Protocol\\Fetch\\Partition' => __DIR__ . '/..' . '/nmred/kafka-php/src/Kafka/Protocol/Fetch/Partition.php',
+        'Kafka\\Protocol\\Fetch\\Topic' => __DIR__ . '/..' . '/nmred/kafka-php/src/Kafka/Protocol/Fetch/Topic.php',
+        'Kafka\\Protocol\\Protocol' => __DIR__ . '/..' . '/nmred/kafka-php/src/Kafka/Protocol/Protocol.php',
+        'Kafka\\SimpleProduce' => __DIR__ . '/..' . '/nmred/kafka-php/src/Kafka/SimpleProduce.php',
+        'Kafka\\Socket' => __DIR__ . '/..' . '/nmred/kafka-php/src/Kafka/Socket.php',
+        'Kafka\\ZooKeeper' => __DIR__ . '/..' . '/nmred/kafka-php/src/Kafka/ZooKeeper.php',
         'Laravel\\Sail\\Console\\InstallCommand' => __DIR__ . '/..' . '/laravel/sail/src/Console/InstallCommand.php',
         'Laravel\\Sail\\Console\\PublishCommand' => __DIR__ . '/..' . '/laravel/sail/src/Console/PublishCommand.php',
         'Laravel\\Sail\\SailServiceProvider' => __DIR__ . '/..' . '/laravel/sail/src/SailServiceProvider.php',
@@ -6137,6 +6178,7 @@ class ComposerStaticInit8e9bc00acd6d2f3b4bc2dbc27d4b1f3e
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit8e9bc00acd6d2f3b4bc2dbc27d4b1f3e::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit8e9bc00acd6d2f3b4bc2dbc27d4b1f3e::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit8e9bc00acd6d2f3b4bc2dbc27d4b1f3e::$prefixesPsr0;
             $loader->classMap = ComposerStaticInit8e9bc00acd6d2f3b4bc2dbc27d4b1f3e::$classMap;
 
         }, null, ClassLoader::class);

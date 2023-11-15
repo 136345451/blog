@@ -571,6 +571,15 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'nmred/kafka-php' => array(
+            'pretty_version' => 'v0.1.6',
+            'version' => '0.1.6.0',
+            'reference' => 'd00128534032521a6d7cef29d636a9ce03f57198',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../nmred/kafka-php',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'nunomaduro/collision' => array(
             'pretty_version' => 'v5.11.0',
             'version' => '5.11.0.0',
