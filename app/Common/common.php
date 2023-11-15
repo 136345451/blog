@@ -11,8 +11,8 @@ function gpx($str)
 {
     $str = trim($str);
     $str = strip_tags($str);//去标签
-    $str = preg_replace("/<script[\s\S]*<\/script>/i","", $str);//去js
-    $str = htmlspecialchars($str,ENT_QUOTES);
+    $str = preg_replace("/<script[\s\S]*<\/script>/i", "", $str);//去js
+    $str = htmlspecialchars($str, ENT_QUOTES);
     return $str;
 }
 
@@ -22,8 +22,8 @@ function gpx($str)
 function gpxs($str)
 {
     $str = trim($str);
-    $str = preg_replace("/<script[\s\S]*<\/script>/i","", $str);//去js
-    $str = htmlspecialchars($str,ENT_QUOTES);
+    $str = preg_replace("/<script[\s\S]*<\/script>/i", "", $str);//去js
+    $str = htmlspecialchars($str, ENT_QUOTES);
     return $str;
 }
 
@@ -85,7 +85,7 @@ function _logs($msg = '', $data = '', $dir = 'log', $path = 'logs')
     if (is_file($filename) && $limit_file_size <= filesize($filename)) {
         @rename($filename, dirname($filename) . DIRECTORY_SEPARATOR . time() . '-' . basename($filename));
     }
-    if (is_array($data)) {
+    if (is_array($data) || is_object($data)) {
         $data = json_encode($data, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
     }
     $mtimestamp = sprintf("%.3f", microtime(true));
@@ -110,10 +110,10 @@ function _logs($msg = '', $data = '', $dir = 'log', $path = 'logs')
 function errorLogs($e, $dir = 'error', $path = 'logs')
 {
     //获取调用该函数的方法名
-    $dbt = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS,2);
+    $dbt = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 2);
 
     //记录日志
-    return _logs(($dbt[1]['function'] ?? ""), ['code' => $e->getCode(), 'msg' => $e->getMessage(), 'file' => $e->getFile().":".$e->getLine()], $dir,$path);
+    return _logs(($dbt[1]['function'] ?? ""), ['code' => $e->getCode(), 'msg' => $e->getMessage(), 'file' => $e->getFile() . ":" . $e->getLine()], $dir, $path);
 }
 
 
@@ -165,7 +165,7 @@ function getDayEnd()
  */
 function getMonthEnd()
 {
-    return mktime(23,59,59,date('m'),date('t'),date('Y')) - time() + 1;
+    return mktime(23, 59, 59, date('m'), date('t'), date('Y')) - time() + 1;
 }
 
 /**
@@ -221,7 +221,7 @@ function jsonReturn($data, $iden = '')
     if (isset($data['data'])) {
         $data['data'] = webEncrypt($data['data']);
     }
-    return response()->json($data, 200, [],JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+    return response()->json($data, 200, [], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 }
 
 /**

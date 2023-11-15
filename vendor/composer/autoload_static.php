@@ -350,8 +350,8 @@ class ComposerStaticInit8e9bc00acd6d2f3b4bc2dbc27d4b1f3e
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
-            1 => __DIR__ . '/..' . '/psr/http-factory/src',
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -563,6 +563,7 @@ class ComposerStaticInit8e9bc00acd6d2f3b4bc2dbc27d4b1f3e
         'App\\Common\\Service\\V1\\DataService' => __DIR__ . '/../..' . '/app/Common/Service/V1/DataService.php',
         'App\\Common\\Service\\V1\\IndexService' => __DIR__ . '/../..' . '/app/Common/Service/V1/IndexService.php',
         'App\\Common\\Service\\V1\\LoginService' => __DIR__ . '/../..' . '/app/Common/Service/V1/LoginService.php',
+        'App\\Common\\Service\\V1\\RabbitmqService' => __DIR__ . '/../..' . '/app/Common/Service/V1/RabbitmqService.php',
         'App\\Common\\Service\\V1\\UserService' => __DIR__ . '/../..' . '/app/Common/Service/V1/UserService.php',
         'App\\Common\\Validate\\BaseValidate' => __DIR__ . '/../..' . '/app/Common/Validate/BaseValidate.php',
         'App\\Common\\Validate\\LoginValidate' => __DIR__ . '/../..' . '/app/Common/Validate/LoginValidate.php',
@@ -582,6 +583,7 @@ class ComposerStaticInit8e9bc00acd6d2f3b4bc2dbc27d4b1f3e
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Http\\Resources\\User' => __DIR__ . '/../..' . '/app/Http/Resources/User.php',
+        'App\\Jobs\\AddVisitProduct' => __DIR__ . '/../..' . '/app/Jobs/AddVisitProduct.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
