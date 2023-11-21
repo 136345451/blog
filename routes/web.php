@@ -29,7 +29,8 @@ if ($path) {
         $module = config('app.default_app_module');
     }
     // api版本控制
-    $v = request()->api_version ? request()->api_version : config('app.api_version');
+    $v = ucfirst(strtolower(request()->api_version ? request()->api_version : config('app.api_version')));
+    define('VERSION', $v);
     $class = "App\\" . ucfirst(strtolower($module)) . "\\Controllers\\{$v}\\" . ucfirst(strtolower($controller)) . 'Controller';
     if (!class_exists($class)) return abort(404);
     Route::any("{module}/{controller}/{action}", [$class, $action]);
