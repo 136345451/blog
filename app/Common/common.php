@@ -74,8 +74,13 @@ function webDecrypt($str)
  * @param string $path 日志根目录，默认logs文件。
  * @return bool
  */
-function _logs($msg = '', $data = '', $dir = 'log', $path = 'logs')
+function _logs($msg = '', $data = '', $dir = 'log', $path = 'logs', $is_queue = false)
 {
+    // 是否使用队列插入日志
+    if (env('QUEUE_LOGS', false) && !$is_queue) {
+        $recordLogsDate = ['msg' => $msg, 'data' => $data, 'dir' => $dir, 'path' => $path];
+        return \App\Jobs\RecordLogsProduct::recordLogsProduct($recordLogsDate);
+    }
     $path = env('root_path') . $path;
     !is_dir($path) && mkdir($path, 0777, true);
     $file_path = $path . DIRECTORY_SEPARATOR . $dir;
@@ -88,7 +93,7 @@ function _logs($msg = '', $data = '', $dir = 'log', $path = 'logs')
     if (is_array($data) || is_object($data)) {
         $data = json_encode($data, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
     }
-    $mtimestamp = sprintf("%.3f", microtime(true));
+    $mtimestamp = sprintf(" % .3f", microtime(true));
     $timestamp = floor($mtimestamp); // 时间戳
     $milliseconds = round(($mtimestamp - $timestamp) * 1000);
     $datetime = date("Y-m-d H:i:s", $timestamp) . '.' . $milliseconds;
@@ -113,7 +118,7 @@ function errorLogs($e, $dir = 'error', $path = 'logs')
     $dbt = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 2);
 
     //记录日志
-    return _logs(($dbt[1]['function'] ?? ""), ['code' => $e->getCode(), 'msg' => $e->getMessage(), 'file' => $e->getFile() . ":" . $e->getLine()], $dir, $path);
+    return _logs(($dbt[1]['function'] ?? ""), ['code' => $e->getCode(), 'msg' => $e->getMessage(), 'file' => $e->getFile() . ":" . $e->getLine()], $dir, $path, true);
 }
 
 
@@ -180,7 +185,7 @@ function httpRequest($url, $data = [], $headers = [], $timeout = 7)
 {
     $ci = curl_init();
     curl_setopt($ci, CURLOPT_URL, $url);
-    curl_setopt($ci, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.146 Safari/537.36");
+    curl_setopt($ci, CURLOPT_USERAGENT, "Mozilla / 5.0 (Windows NT 6.1) AppleWebKit / 537.36 (KHTML, like Gecko) Chrome / 33.0.1750.146 Safari / 537.36");
     curl_setopt($ci, CURLOPT_CONNECTTIMEOUT, 60);
     curl_setopt($ci, CURLOPT_TIMEOUT, $timeout);
     curl_setopt($ci, CURLOPT_RETURNTRANSFER, true);

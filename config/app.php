@@ -248,7 +248,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-
+        'KafkaService' => App\Common\Service\V1\KafkaService::class,
+        'RecordLogsProduct'=>App\Jobs\RecordLogsProduct::class
     ],
 
 ];
